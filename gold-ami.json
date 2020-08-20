@@ -4,7 +4,7 @@
   },
   "builders": [
     {
-      "ami_name": "SRAVYA-linux-aws-custom-{{timestamp}}-new",
+      "ami_name": "ami-linux-aws-custom-{{timestamp}}-new",
       "instance_type": "t2.micro",
       "region": "{{user `region`}}",
       "source_ami_filter": {
