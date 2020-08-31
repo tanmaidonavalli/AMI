@@ -13,7 +13,7 @@ resource "null_resource" "connect_instance" {
     host = "${aws_instance.inspector-instance.public_ip}"
     user        = "ansible"
     password = "ansible123"
-    #private_key = "${file(var.private_key)}"
+    private_key = "${file(var.private_key)}"
   }
   provisioner "remote-exec" {
     inline = [
