@@ -8,18 +8,19 @@ resource "aws_instance" "inspector-instance" {
     Name = "InspectInstances"
   }
 
+resource "null_resource" "connect_instance" {
+  connection {
+    host = "${aws_instance.inspector-instance.public_ip}"
+    user        = "ansible"
+    password = "ansible123"
+    #private_key = "${file(var.private_key)}"
+  }
   provisioner "remote-exec" {
-    connection {
-      type = "ssh"
-      user = "ansible"
-      password = "ansible123"
-      host = "${aws_instance.inspector-instance.public_ip}"
-    }
     inline = [
-      "wget https://d1wk0tztpsntt1.cloudfront.net/linux/latest/install -P /tmp/",
-      "sudo bash /tmp/install"
+      "echo "a" > a.txt,
     ]
   }
+  depends_on = ["aws_instance.inspector-instance"]
 }
 
 resource "aws_security_group" "sample_sg" {
