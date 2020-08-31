@@ -7,7 +7,7 @@ resource "aws_instance" "inspector-instance" {
   tags = {
     Name = "InspectInstances"
   }
-
+ 
 resource "null_resource" "connect_instance" {
   connection {
     host = "${aws_instance.inspector-instance.public_ip}"
@@ -17,7 +17,8 @@ resource "null_resource" "connect_instance" {
   }
   provisioner "remote-exec" {
     inline = [
-      "echo "a" > a.txt,
+      "wget https://d1wk0tztpsntt1.cloudfront.net/linux/latest/install -P /tmp/",
+      "sudo bash /tmp/install"
     ]
   }
   depends_on = ["aws_instance.inspector-instance"]
