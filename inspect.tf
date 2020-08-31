@@ -7,7 +7,7 @@ resource "aws_instance" "inspector-instance" {
   tags = {
     Name = "InspectInstances"
   }
- 
+  }
 resource "null_resource" "connect_instance" {
   connection {
     host = "${aws_instance.inspector-instance.public_ip}"
