@@ -6,5 +6,4 @@ AMI_ID=`echo $ARTIFACT | cut -d ':' -f2`
 echo 'variable "AMI_ID" { default = "'${AMI_ID}'" }' > amivar.txt
 echo $AMI_ID
 
-terraform init
-terraform apply
+
