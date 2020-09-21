@@ -14,8 +14,6 @@ download_dir = '/tmp/'
 
 def lambda_handler(event, context):
     ssm = boto3.client('ssm')
-    s3 = boto3.resource('s3')
-    s3Client = boto3.client('s3')
     ssm_parameter = ssm.get_parameter(Name='/GoldenAMI/Linux/RedHat-7/source', WithDecryption=True)
     save_parameter = (ssm_parameter['Parameter']['Value'])
     print (save_parameter)
