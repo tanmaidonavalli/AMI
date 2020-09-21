@@ -1,6 +1,7 @@
 {
   "variables": {
-    "region": "us-east-2"
+    "region": "us-east-2" 
+    "id": ""
   },
   "builders": [
     {
@@ -10,6 +11,7 @@
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
+          "id": "{{user 'id'}}"
           "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
           "root-device-type": "ebs"
         },
